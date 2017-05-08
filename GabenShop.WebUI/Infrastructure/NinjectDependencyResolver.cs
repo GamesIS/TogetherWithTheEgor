@@ -7,6 +7,7 @@ using Moq;
 using GabenShop.Domain.Abstract;
 using GabenShop.Domain.Entities;
 using Ninject;
+using GabenShop.Domain.Concrete;
 
 namespace GabenShop.WebUI.Infrastructure
 {
@@ -32,14 +33,18 @@ namespace GabenShop.WebUI.Infrastructure
 
         private void AddBindings()
         {
-            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            /*Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup(m => m.Products).Returns(new List<Product>
             {
                 new Product { Name = "SimCity", Price = 1499 },
                 new Product { Name = "TITANFALL", Price=2299 },
                 new Product { Name = "Battlefield 4", Price=899.4M }
             });
-            kernel.Bind<IProductRepository>().ToConstant(mock.Object);
+            kernel.Bind<IProductRepository>().ToConstant(mock.Object);*/
+
+            kernel.Bind<IProductRepository>().To<EFProductRepository>();
+
+
             //kernel.Bind<IValueCalculator>().To<LinqValueCalculator>(); пример есть в статье
             // Здесь размещаются привязки
         }
