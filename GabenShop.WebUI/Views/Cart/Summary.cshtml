@@ -1,0 +1,15 @@
+﻿@model GabenShop.Domain.Entities.Cart
+
+<div>
+    @Html.ActionLink("Корзина", "Index", "Cart",
+    new { returnUrl = Request.Url.PathAndQuery },
+    new { @class = "btn btn-default navbar-btn" })<!--Удалить-->
+</div>
+
+<div>
+    <b>Ваша корзина:</b>
+    @Model.Lines.Sum(x => x.Quantity) игр,
+    @Model.ComputeTotalValue().ToString("# руб")
+</div>
+<h2>Summary</h2>
+

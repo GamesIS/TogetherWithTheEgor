@@ -1,0 +1,33 @@
+﻿@model GabenShop.Domain.Entities.ShippingDetails
+
+@{
+    ViewBag.Title = "GabenShop: форма заказа";
+}
+
+<h2>Оформление заказа</h2>
+<p>Введите ваши данные</p>
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary();
+    <h3>Данные</h3>
+    <div>
+        <label>Ваше имя:</label>
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })<!--Удалить-->
+    </div>
+    foreach (var property in ViewData.ModelMetadata.Properties)
+    {
+        if (property.PropertyName != "Name" && property.PropertyName != "GiftWrap")
+        {
+            <div class="form-group">
+                <label>@(property.DisplayName ?? property.PropertyName)</label>
+                @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })<!--Удалить-->
+            </div>
+        }
+    }
+
+    <div>
+        <input class="btn btn-primary" type="submit" value="Обработать заказ" />
+    </div>
+}

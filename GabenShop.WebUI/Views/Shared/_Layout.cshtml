@@ -6,7 +6,14 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
+    <h2>
+        GabenShop - магазин компьютерных игр
+        @Html.Action("Summary", "Cart")
+    </h2>
     <div>
+        <div>
+            @Html.Action("Menu", "Nav")
+        </div>
         @RenderBody()
     </div>
 </body>

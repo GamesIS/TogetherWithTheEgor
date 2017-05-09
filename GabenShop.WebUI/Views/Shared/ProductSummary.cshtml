@@ -1,0 +1,16 @@
+﻿@model GabenShop.Domain.Entities.Product
+<div>
+    <h3>
+        <strong>@Model.Name</strong>
+        <span> @Model.Price.ToString("# руб")</span>        
+    </h3>
+    @using (Html.BeginForm("AddToCart", "Cart"))//Это для добавления кнопки корзины
+    {
+        <div>
+            @Html.HiddenFor(x => x.ProductID)
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <input type="submit" value="Добавить в корзину"/>
+        </div>
+    }
+    <span>@Model.Description</span>
+</div>

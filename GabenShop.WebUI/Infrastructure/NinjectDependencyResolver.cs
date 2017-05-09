@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -33,20 +34,18 @@ namespace GabenShop.WebUI.Infrastructure
 
         private void AddBindings()
         {
-            /*Mock<IProductRepository> mock = new Mock<IProductRepository>();
-            mock.Setup(m => m.Products).Returns(new List<Product>
-            {
-                new Product { Name = "SimCity", Price = 1499 },
-                new Product { Name = "TITANFALL", Price=2299 },
-                new Product { Name = "Battlefield 4", Price=899.4M }
-            });
-            kernel.Bind<IProductRepository>().ToConstant(mock.Object);*/
-
             kernel.Bind<IProductRepository>().To<EFProductRepository>();
 
 
-            //kernel.Bind<IValueCalculator>().To<LinqValueCalculator>(); пример есть в статье
-            // Здесь размещаются привязки
+
+            EmailSettings emailSettings = new EmailSettings//Регистрация реализации обработчика заказов
+            {
+                WriteAsFile = bool.Parse(ConfigurationManager
+                    .AppSettings["Email.WriteAsFile"] ?? "false")
+            };
+
+            kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
+                .WithConstructorArgument("settings", emailSettings);//Регистрация реализации обработчика заказов
         }
     }
 }

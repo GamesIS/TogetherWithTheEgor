@@ -18,12 +18,12 @@ namespace GabenShop.WebUI.Controllers
             this.repository = repository;
         }
 
-        public ViewResult List(int page = 1)
+        public ViewResult List(string category, int page = 1)
         {
-            //return View(repository.Products);
             ProductsListViewModel model = new ProductsListViewModel
             {
                 Products = repository.Products
+                .Where(p=> category == null || p.Category == category)
                 .OrderBy(Product => Product.ProductID)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize),
@@ -31,8 +31,11 @@ namespace GabenShop.WebUI.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = pageSize,
-                    TotalItems = repository.Products.Count()
-                }
+                    TotalItems = category == null ?
+                        repository.Products.Count() :
+                        repository.Products.Where(Product => Product.Category == category).Count()
+                },
+                CurrentCategory = category
             };
             return View(model);
         }
