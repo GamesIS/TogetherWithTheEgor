@@ -1,16 +1,22 @@
 ﻿@model GabenShop.Domain.Entities.Product
-<div>
-    <h3>
-        <strong>@Model.Name</strong>
-        <span> @Model.Price.ToString("# руб")</span>        
-    </h3>
-    @using (Html.BeginForm("AddToCart", "Cart"))//Это для добавления кнопки корзины
-    {
-        <div>
-            @Html.HiddenFor(x => x.ProductID)
-            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-            <input type="submit" value="Добавить в корзину"/>
+<li>
+    <div class="img"><a href="#"><img alt="" src="#"></a></div>
+    <div class="info">
+        <a class="title" href="#">@Model.Name</a>
+        <p>@Model.Description</p>
+        <div class="price">
+            <span class="st">Our price:</span><strong>@Model.Price.ToString("# руб")</strong>
         </div>
-    }
-    <span>@Model.Description</span>
-</div>
+        <div class="actions">
+            <a href="#">Details</a>
+            @using (Html.BeginForm("AddToCart", "Cart"))//Это для добавления кнопки корзины
+            {
+                <div>
+                    @Html.HiddenFor(x => x.ProductID)
+                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    <input type="submit" value="Добавить в корзину" />
+                </div>
+            }
+        </div>
+    </div>
+</li>

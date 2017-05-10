@@ -6,11 +6,37 @@
     ViewBag.Title = "Товары";
 }
 
-@foreach (var p in @Model.Products)
-{
-    @Html.Partial("ProductSummary", p)
-}
-<div>
-    @Html.PageLinks(Model.PagingInfo, x=> Url.Action("List",
-    new { page = x, category = Model.CurrentCategory }))
-</div>
+
+
+
+<section id="content">
+    <!-- Defining the content section #2 -->
+    <div id="left">
+        <h3>Товары</h3>
+        <ul>
+            @foreach (var p in @Model.Products)
+            {
+                @Html.Partial("ProductSummary", p)
+            }            
+        </ul>
+        <div>
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
+             new { page = x, category = Model.CurrentCategory }))
+        </div>
+    </div>
+    <div id="right">
+        <h3>Sales</h3>
+        <ul>
+            <li>
+                <div class="img"><a href="#"><img src="images/post6.jpg" alt=""></a></div>
+                <div class="info">
+                    <a href="#" class="title">Title</a>
+                    <div class="price">
+                        <span class="usual">usual price </span>&nbsp;
+                        <span class="special">price after sales</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
