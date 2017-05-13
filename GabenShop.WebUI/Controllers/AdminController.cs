@@ -49,5 +49,17 @@ namespace GabenShop.WebUI.Controllers
         {
             return View("Edit", new Product());
         }
+
+        [HttpPost]
+        public ActionResult Delete(int productID)
+        {
+            Product deletedProduct = repository.DeleteProduct(productID);
+            if (deletedProduct != null)
+            {
+                TempData["message"] = string.Format("Игра \"{0}\" была удалена",
+                    deletedProduct.Name);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
