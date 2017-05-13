@@ -1,11 +1,23 @@
 ﻿@model GabenShop.Domain.Entities.Cart
+@using System.Text;
 
-<li>
-    @Html.ActionLink("Корзина", "Index", "Cart",
+<li style="float:right;">
+    @{ 
+        StringBuilder cartText = new StringBuilder("Корзина ");
+
+        var countProdInCart = @Model.Lines.Sum(x => x.Quantity);
+
+        cartText.Append(countProdInCart);
+        if (countProdInCart == 0 || countProdInCart > 4) cartText.Append(" товаров ");
+        else if (countProdInCart == 1) cartText.Append(" товар ");
+        else if (countProdInCart >= 2 && countProdInCart <= 4) cartText.Append(" товара ");
+
+        var money = Model.ComputeTotalValue();
+
+        if (money == 0) cartText.Append("0 руб");
+        else cartText.Append(" " + money.ToString("# руб"));
+    }
+
+    @Html.ActionLink(cartText.ToString(), "Index", "Cart",
     new { returnUrl = Request.Url.PathAndQuery })<!--Удалить-->
 </li>
-
-@*<li>
-        Ваша корзина: @Model.Lines.Sum(x => x.Quantity) игр, @Model.ComputeTotalValue().ToString("# руб")
-</li>*@
-

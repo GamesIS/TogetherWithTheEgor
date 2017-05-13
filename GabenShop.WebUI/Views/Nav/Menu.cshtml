@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<string>
 
 <li>
-    @Html.ActionLink("Главная", "List", "Product", null,//Вот это удалить или добавить свои классы
-    new { @class = "btn btn-block btn-default btn-lg" })
+    @Html.ActionLink("Все товары", "List", "Product", null,//Вот это удалить или добавить свои классы
+    null)
 </li>
 
 @foreach (var link in Model)
@@ -14,9 +14,6 @@
     action = "List",
     category = link,
     page = 1
-}, new
-{
-    @class = "btn btn-block btn-default btn-lg"
-})
+}, null)
     </li>
 }

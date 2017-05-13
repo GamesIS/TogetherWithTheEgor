@@ -47,6 +47,7 @@ nav ul {
     padding: 0;
 }
 nav ul li {
+    list-style: none outside none;
     float: left;
 }
 nav ul li a {
@@ -105,6 +106,8 @@ nav ul li a:hover, nav ul li.selected a {
 #main {
     background-color: #fff;
     padding:20px 0;
+    display: inline-block;
+    width: 100%;
 }
 #content {
     overflow: hidden;
@@ -187,6 +190,20 @@ nav ul li a:hover, nav ul li.selected a {
     overflow: hidden;
     padding: 17px 0 0 21px;
     width: 164px;
+    text-overflow: ellipsis;
+}
+
+#content #left ul li .info .actions input {
+    border: 1px solid #E0E0E0;
+    cursor:pointer;
+    color: #009832;
+    display: block;
+    float: right;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 16px;
+    padding: 5px;
+    text-decoration: none;
 }
 #content ul li .info .title {
     color: #4B4B4B;
@@ -196,18 +213,38 @@ nav ul li a:hover, nav ul li.selected a {
     line-height: 16px;
     text-decoration: none;
     text-transform: uppercase;
+    height: 32px;
+    overflow: hidden;
     width: 150px;
+    text-align:center;
 }
 #content ul li .info .title:hover {
     color: #049733;
 }
-#content #left ul li .info p {
+#content #left ul li .info p {    
     color: #7F7F7F;
     font-size: 11px;
     line-height: 16px;
     height: 60px;
     padding-top: 3px;
+    text-overflow: ellipsis;
+    text-align:justify;
+    height: 63px;
+    max-width: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+
 }
+#content #left ul li .info p::-webkit-scrollbar {    
+    width: 0;
+}
+#content #left ul li .info p { 
+    -ms-overflow-style: none;     
+}
+#content #left ul li .info p { 
+    overflow: -moz-scrollbars-none;    
+}
+
 #content #left ul li .info .price {
     background: none repeat scroll 0 0 #F7F7F7;
     color: #383838;
@@ -259,7 +296,18 @@ nav ul li a:hover, nav ul li.selected a {
 }
 #content #left ul li .info .actions a:first-child {
     color: #009832;
-    float:left;
+    float:left;       
+}
+#content #left #page {
+  text-align:center;
+  display:inline-block;
+  margin-bottom: 5px;
+}
+#content #left{
+  text-align:center;
+}
+#content #left #products{
+  display:inline-block;
 }
 
 /* footer section */
@@ -279,4 +327,63 @@ footer #privacy {
 footer a{
     color: #9B9B9B;
     text-decoration: none;
+}
+#page a{
+    border: 1px solid #E0E0E0;
+    color: inherit;
+    display: block;
+    float:left;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 16px;
+    padding: 5px;
+    text-decoration: none;
+}
+.btn{
+    border: 1px solid #E0E0E0;
+    color: inherit;
+    display: block;
+    float:left;
+    font-weight: bold;
+    line-height: 16px;
+    padding: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+#page a.pageBtn.selected{
+    background-color: darkseagreen;
+    color: black;
+}
+.text-right{
+    text-align:right;
+}
+.text-center{
+    text-align: center; 
+}
+.text-left{
+    text-align: left;
+}
+#cartTable table{    
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    text-align:center;  
+    margin: auto;  
+    white-space: nowrap;
+    border-spacing: 70px 11px
+}
+.panel-footer{
+    text-align: center;
+    display: inline-block;    
+    font-weight: 600;    
+    color: black;
+}
+.panel-footer .btn{
+    font-size: 17px;
+    margin: 4px;
+    border: 2px solid #E0E0E0;
+}
+.panel-body .form-group input{
+    width: 100%;
+    margin: 5px 0px 5px 0px;
 }

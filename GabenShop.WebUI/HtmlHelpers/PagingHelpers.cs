@@ -23,9 +23,8 @@ namespace GabenShop.WebUI.HtmlHelpers
                 if (i == pagingInfo.CurrentPage)
                 {
                     tag.AddCssClass("selected");
-                    tag.AddCssClass("btn-primary");
                 }
-                tag.AddCssClass("btn btn-default");
+                tag.AddCssClass("pageBtn");
                 result.Append(tag.ToString());
             }
             return MvcHtmlString.Create(result.ToString());

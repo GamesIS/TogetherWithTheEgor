@@ -13,19 +13,21 @@
     <!-- Defining the content section #2 -->
     <div id="left">
         <h3>Товары</h3>
-        <ul>
-            @foreach (var p in @Model.Products)
+        <div id="products">
+            <ul>
+                @foreach (var p in @Model.Products)
             {
-                @Html.Partial("ProductSummary", p)
-            }            
-        </ul>
-        <div>
+                    @Html.Partial("ProductSummary", p)
+                }
+            </ul>
+        </div>        
+        <div id="page">
             @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
-             new { page = x, category = Model.CurrentCategory }))
+             new { page = x, category = Model.CurrentCategory }))            
         </div>
     </div>
     <div id="right">
-        <h3>Sales</h3>
+        <h3>Скидки</h3>
         <ul>
             <li>
                 <div class="img"><a href="#"><img src="images/post6.jpg" alt=""></a></div>

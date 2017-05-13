@@ -9,48 +9,51 @@
             vertical-align: middle;  https://professorweb.ru/my/ASP_NET/gamestore/level2/2_6.php
         }
     </style>*@
-<h2>Ваша корзина</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Кол-во</th>
-            <th>Игра</th>
-            <th class="text-right">Цена</th>
-            <th class="text-right">Общая цена</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var line in Model.Cart.Lines)
-        {
-            <tr>
-                <td class="text-center">@line.Quantity</td>
-                <td class="text-left">@line.Product.Name</td>
-                <td class="text-right">@line.Product.Price.ToString("# руб")</td>
-                <td class="text-right">
-                    @((line.Quantity * line.Product.Price).ToString("# руб"))
-                </td>
-                <td>
-                    @using (Html.BeginForm("RemoveFromCart", "Cart"))
-                    {
-                        @Html.Hidden("ProductID", line.Product.ProductID)
-                        @Html.HiddenFor(x => x.ReturnUrl)
-                        <input type="submit" value="Удалить" />
-                    }
-                </td>
-            </tr>
-        }
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="3" class="text-right">Итого:</td>
-            <td class="text-right">
-                @Model.Cart.ComputeTotalValue().ToString("# руб")
-            </td>
-        </tr>
-    </tfoot>
-</table>
-
 <div class="text-center">
-    <a class="btn btn-primary" href="@Model.ReturnUrl">Продолжить покупки</a>
-    @Html.ActionLink("Оформить заказ", "Checkout", null, new { @class = "btn btn-primary"})<!--Удалить класс-->
+        <h1 style="color:black;">Ваша корзина</h1>
+        <div id="cartTable">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="color:black;">Кол-во</th>
+                        <th style="color:black;">Игра</th>
+                        <th class="text-center" style="color:black;">Цена</th>
+                        <th class="text-center" style="color:black;">Общая цена</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var line in Model.Cart.Lines)
+            {
+                        <tr>
+                            <td class="text-center">@line.Quantity</td>
+                            <td class="text-left">@line.Product.Name</td>
+                            <td class="text-right">@line.Product.Price.ToString("# руб")</td>
+                            <td class="text-right">
+                                @((line.Quantity * line.Product.Price).ToString("# руб"))
+                            </td>
+                            <td>
+                                @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                                {
+                                    @Html.Hidden("ProductID", line.Product.ProductID)
+                                    @Html.HiddenFor(x => x.ReturnUrl)
+                                    <input class="btn" type="submit" value="Удалить" />
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-right">Итого:</td>
+                        <td class="text-right" style="color: green;">
+                            @Model.Cart.ComputeTotalValue().ToString("# руб")
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>        
+        <div class="panel-footer">
+            <a class="btn" href="@Model.ReturnUrl">Продолжить покупки</a>
+            @Html.ActionLink("Оформить заказ", "Checkout", null, new { @class = "btn" })<!--Удалить класс-->
+        </div>   
 </div>

@@ -15,7 +15,7 @@ namespace GabenShop.WebUI.Controllers
         private IOrderProcessor orderProcessor;
         public CartController(IProductRepository repository, IOrderProcessor orderProcessor)
         {
-            this.repository = repository;
+            this.repository = repository;            
             this.orderProcessor = orderProcessor;
         }
 
