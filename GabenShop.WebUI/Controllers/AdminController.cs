@@ -8,6 +8,7 @@ using GabenShop.Domain.Entities;
 
 namespace GabenShop.WebUI.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         IProductRepository repository;

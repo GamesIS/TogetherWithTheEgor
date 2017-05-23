@@ -55,6 +55,13 @@
                 </ul>
             </nav>
             <section id="submenu">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("admin"))
+                    {
+                        <p>admin</p>
+                    }
+                }
                 <!-- Defining the sub menu -->
                 <ul>
                     @Html.Action("Menu", "Nav")
