@@ -39,5 +39,25 @@ namespace GabenShop.WebUI.Controllers
             };
             return View(model);
         }
+
+        public FileContentResult GetImage(int productID)
+        {
+            Product product = repository.Products
+                .FirstOrDefault(g => g.ProductID == productID);
+
+            if (product != null)
+            {
+                return File(product.Image, "jpg");
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public ActionResult Discount()
+        {
+            return PartialView("Discount");
+        }
     }
 }

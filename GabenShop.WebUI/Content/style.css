@@ -148,14 +148,14 @@ nav ul li a:hover, nav ul li.selected a {
 #content #left ul li {
     float:left;
     padding-bottom: 21px;
-    width: 33%;
+    width:197.891px;
 }
 #content #left ul li:hover {
     background-color: #fbfbfb;
 }
 #content #right ul li {
     border-top: 1px solid #E7E7E7;
-    overflow: hidden;
+    overflow: hidden;    
 }
 #content #right ul li:hover {
     background-color: #fbfbfb;
@@ -225,12 +225,10 @@ nav ul li a:hover, nav ul li.selected a {
     color: #7F7F7F;
     font-size: 11px;
     line-height: 16px;
-    height: 60px;
+    width: 168.891px;
+    height: 66px;
     padding-top: 3px;
-    text-overflow: ellipsis;
     text-align:justify;
-    height: 63px;
-    max-width: 100%;
     overflow: scroll;
     overflow-x: hidden;
 

@@ -34,6 +34,6 @@ namespace GabenShop.Domain.Entities
         [Required(ErrorMessage ="Пожалуйста, укажите целочисленное значение ранга")]
         public int Rank { get; set; }
 
-        //Image добавить
+        public byte[] Image { get; set; }
     }
 }

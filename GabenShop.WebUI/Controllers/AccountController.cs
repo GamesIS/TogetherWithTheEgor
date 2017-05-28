@@ -37,7 +37,7 @@ namespace GabenShop.WebUI.Controllers
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Invalid login or password");
+                ModelState.AddModelError(string.Empty, "Неправильный логин или пароль");
                 return View();
             }
         }
@@ -60,6 +60,11 @@ namespace GabenShop.WebUI.Controllers
             {
                 return PartialView("_GuestUserPartial");
             }
+        }
+
+        public ActionResult Registration()
+        {
+            return View();
         }
     }
 }

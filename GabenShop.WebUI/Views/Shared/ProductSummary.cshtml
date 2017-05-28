@@ -1,20 +1,31 @@
 ﻿@model GabenShop.Domain.Entities.Product
 <li>
-    <div class="img"><a href="#"><img alt="" src="#"></a></div>
+    @if (Model.Image != null)
+    {
+        <div class="pull-left" style="margin-right: 10px">
+            <img class="img-thumbnail" width="128" height="128"
+                 src="@Url.Action("GetImage", "Product",
+                new { Model.ProductID })" />
+        </div>
+    }
+    else
+    {
+        <div class="img"><a href="#"><img alt="" src="#"></a></div>
+    }
+
     <div class="info">
         <a class="title" href="#">@Model.Name</a>
         <p>@Model.Description</p>
         <div class="price">
-            <span class="st">Цена:</span><strong>@Model.Price.ToString("# руб")</strong>
+            <span class="st">Цена:</span><strong>@Model.Price.ToString("# ₽")</strong>
         </div>
         <div class="actions">
-            <a href="#">Детали</a>
             @using (Html.BeginForm("AddToCart", "Cart"))//Это для добавления кнопки корзины
             {
                 <div>
                     @Html.HiddenFor(x => x.ProductID)
                     @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                    <input type="submit" value="Добавить в корзину" />
+                    <input type="submit" style="width: 100%;" value="Добавить в корзину" />
                 </div>
             }
         </div>

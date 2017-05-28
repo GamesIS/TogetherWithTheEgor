@@ -1,0 +1,41 @@
+﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+@{
+    ViewBag.Title = "Регистрация";
+}
+    <div id="regist">
+        <ul>
+            Логин
+            <li>
+                <input class="registIn" placeholder="Enter your login" />
+            </li>
+            <br />
+            Пароль
+            <li>
+                <input class="registIn" id="password" placeholder="password" type="password" />
+            </li>
+            <br />
+            Подтвердите пароль
+            <li>
+                <input class="registIn" id="confpassword" placeholder="Confirm password" type="password" />
+            </li>
+            <li class="ifEmpty">Пароли не совпадают</li>
+        </ul>
+        <input type="submit" value="Регистрация" id="submit" />
+    </div>
+
+<script>
+    $(document).ready(function () {
+        $(".registIn#confpassword").keyup(function () {
+            if ($("#confpassword").val() != $("#password").val()) {
+                $(".ifEmpty").slideDown(1000);
+                $("#confpassword").css("color", "red");
+            } else {
+                $(".ifEmpty").slideUp(1000);
+                $("#confpassword").css("color", "#506a6b");
+            }
+
+        });
+    });
+</script>
+
+

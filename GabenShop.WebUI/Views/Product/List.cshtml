@@ -20,7 +20,8 @@
                     @Html.Partial("ProductSummary", p)
                 }
             </ul>
-        </div>        
+        </div>      
+        <br />  
         <div id="page">
             @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
              new { page = x, category = Model.CurrentCategory }))            
@@ -30,14 +31,7 @@
         <h3>Скидки</h3>
         <ul>
             <li>
-                <div class="img"><a href="#"><img src="images/post6.jpg" alt=""></a></div>
-                <div class="info">
-                    <a href="#" class="title">Title</a>
-                    <div class="price">
-                        <span class="usual">usual price </span>&nbsp;
-                        <span class="special">price after sales</span>
-                    </div>
-                </div>
+                @Html.Action("Discount","Product")                
             </li>
         </ul>
     </div>

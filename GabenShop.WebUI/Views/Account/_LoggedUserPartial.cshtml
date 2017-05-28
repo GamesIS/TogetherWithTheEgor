@@ -1,0 +1,7 @@
+﻿<li style="float:right;">
+    @Html.ActionLink("Выход", "Logout", "Account")
+</li>
+<li style="float:right;">
+    <a href="#">Приветствуем вас: @User.Identity.Name</a>
+</li>
+@Html.Action("Summary", "Cart")

@@ -12,7 +12,7 @@ namespace GabenShop.WebUI.Models
     public class AccountModel
     {
         private static readonly string conStr;
-        private static readonly string[] roleNames = { null, "Users", "Admins" };
+        private static readonly string[] roleNames = { null, "User", "Administrator" };
 
         static AccountModel()
         {
@@ -27,10 +27,10 @@ namespace GabenShop.WebUI.Models
 
         public string[] GetRoles(string username)
         {
-            using (var con = new SqlConnection(conStr))
+            using (var con = new MySqlConnection(conStr))
             {
                 var cmd = con.CreateCommand();
-                cmd.CommandText = "SELECT Role FROM Users WHERE UserName=@UserName";
+                cmd.CommandText = "SELECT Role FROM users WHERE UserName=@UserName";
                 cmd.Parameters.AddWithValue("@UserName", username);
 
                 con.Open();
@@ -50,10 +50,10 @@ namespace GabenShop.WebUI.Models
         {
             int roleId = Array.IndexOf(roleNames, roleName);
 
-            using (var con = new SqlConnection(conStr))
+            using (var con = new MySqlConnection(conStr))
             {
                 var cmd = con.CreateCommand();
-                cmd.CommandText = "SELECT * FROM Users WHERE UserName=@UserName AND Role=@Role LIMIT 1";
+                cmd.CommandText = "SELECT * FROM users WHERE UserName=@UserName AND Role=@Role LIMIT 1";
                 cmd.Parameters.AddWithValue("@UserName", username);
                 cmd.Parameters.AddWithValue("@Role", roleId);
 

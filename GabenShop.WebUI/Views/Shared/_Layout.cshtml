@@ -2,7 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="@Url.Content("~/Content/style.css")" type="text/css" media="screen">
-    <link rel="stylesheet" href="@Url.Content("~/Content/style.css")" type="text/css" media="screen">
+    <link rel="stylesheet" href="@Url.Content("~/Content/styleRegist.css")" type="text/css" media="screen">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
@@ -49,19 +49,10 @@
                 <ul>
                     <li class="selected"><a href="/">Главная</a></li>
                     <li><a href="#">Мои заказы</a></li>                    
-                    <li><a href="#">Вход</a></li>
-                    <li><a href="#">Регистрация</a></li>
-                    @Html.Action("Summary", "Cart")
+                    @Html.Action("UserBlock", "Account")                    
                 </ul>
             </nav>
-            <section id="submenu">
-                @if (User.Identity.IsAuthenticated)
-                {
-                    if (User.IsInRole("admin"))
-                    {
-                        <p>admin</p>
-                    }
-                }
+            <section id="submenu">                
                 <!-- Defining the sub menu -->
                 <ul>
                     @Html.Action("Menu", "Nav")
