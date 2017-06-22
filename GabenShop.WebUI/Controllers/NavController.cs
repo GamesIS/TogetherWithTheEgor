@@ -19,8 +19,6 @@ namespace GabenShop.WebUI.Controllers
 
         public PartialViewResult Menu(string category = null)
         {
-            //ViewBag.SelectedCategory = category;// https://professorweb.ru/my/ASP_NET/gamestore/level2/2_4.php для выделения выбранной категории
-
             IEnumerable<string> categories = repository.Products
                 .Select(game => game.Category)
                 .Distinct()

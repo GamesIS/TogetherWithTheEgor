@@ -13,10 +13,14 @@
     <!-- Defining the content section #2 -->
     <div id="left">
         <h3>Товары</h3>
+        <div style="height:30px;">
+            @Html.ActionLink("Цена ↑", "List", "Product", new { category = Model.CurrentCategory, sort = 0 }, new { style = "float:right;",  @class = "sort" })
+            @Html.ActionLink("Цена ↓", "List", "Product", new { category = Model.CurrentCategory, sort = 1 }, new { style = "float:right;",  @class = "sort" })
+        </div>
         <div id="products">
             <ul>
                 @foreach (var p in @Model.Products)
-            {
+                {
                     @Html.Partial("ProductSummary", p)
                 }
             </ul>
@@ -24,11 +28,11 @@
         <br />  
         <div id="page">
             @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
-             new { page = x, category = Model.CurrentCategory }))            
+             new { page = x, sort = Model.CurrentSort, category = Model.CurrentCategory }))  
         </div>
     </div>
     <div id="right">
-        <h3>Скидки</h3>
+        <h3>Наши новости</h3>
         <ul>
             <li>
                 @Html.Action("Discount","Product")                

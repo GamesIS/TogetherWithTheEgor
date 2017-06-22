@@ -1,7 +1,17 @@
-﻿<li style="float:right;">
+﻿@using GabenShop.WebUI.Models
+@model GabenShop.WebUI.Models.AccountModel
+<li style="float:right;">
     @Html.ActionLink("Выход", "Logout", "Account")
 </li>
 <li style="float:right;">
     <a href="#">Приветствуем вас: @User.Identity.Name</a>
 </li>
+<li>
+    @{
+        if (Model.IsInRole(User.Identity.Name, "Administrator"))
+        {            
+            <a href="Admin/Index">Админ панель</a>
+        }
+    }
+</li>        
 @Html.Action("Summary", "Cart")

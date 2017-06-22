@@ -1,41 +1,44 @@
 ﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+@model GabenShop.WebUI.Models.Login
 @{
     ViewBag.Title = "Регистрация";
 }
+
+@using (Html.BeginForm())
+{
     <div id="regist">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })        
         <ul>
             Логин
             <li>
-                <input class="registIn" placeholder="Enter your login" />
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "registIn", pattern = "[a-zA-Z0-9]{5,40}", required = "required" } })
             </li>
             <br />
             Пароль
             <li>
-                <input class="registIn" id="password" placeholder="password" type="password" />
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "registIn", pattern = "[a-zA-Z0-9]{5,40}", required = "required" } })
             </li>
-            <br />
-            Подтвердите пароль
-            <li>
-                <input class="registIn" id="confpassword" placeholder="Confirm password" type="password" />
-            </li>
-            <li class="ifEmpty">Пароли не совпадают</li>
+            @**@<br />
+                Подтвердите пароль
+                <li>
+                    <input id="confpassword" class="registIn" placeholder="Confirm password" type="password" />
+                </li>
+                <li class="ifEmpty">Пароли не совпадают</li>
         </ul>
         <input type="submit" value="Регистрация" id="submit" />
     </div>
-
+}
 <script>
     $(document).ready(function () {
-        $(".registIn#confpassword").keyup(function () {
-            if ($("#confpassword").val() != $("#password").val()) {
+        $('form').submit(function () {
+            if ($("#Password").val() != $("#confpassword").val()) {
                 $(".ifEmpty").slideDown(1000);
                 $("#confpassword").css("color", "red");
-            } else {
-                $(".ifEmpty").slideUp(1000);
-                $("#confpassword").css("color", "#506a6b");
+                return false;
             }
-
-        });
+        });        
     });
 </script>
 
 
+#

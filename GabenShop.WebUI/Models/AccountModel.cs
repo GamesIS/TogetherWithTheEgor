@@ -75,5 +75,31 @@ namespace GabenShop.WebUI.Models
                 return cmd.ExecuteReader().Read();
             }
         }
+
+        public bool IsReadyToRegistration(string login)
+        {
+            using (var con = new MySqlConnection(conStr))
+            {
+                var cmd = con.CreateCommand();
+                cmd.CommandText = "SELECT * FROM users WHERE UserName=@UserName LIMIT 1";
+                cmd.Parameters.AddWithValue("@UserName", login);
+                con.Open();
+                return cmd.ExecuteReader().Read();
+            }
+        }
+
+        public void Registration(string login, string password)
+        {
+            using (var con = new MySqlConnection(conStr))
+            {
+                con.Open();
+                var cmd = con.CreateCommand();
+                cmd.CommandText = "INSERT INTO users (UserName, Password, Role) VALUES (?UserName, ?Password, 1)";
+                cmd.Parameters.Add("?UserName", MySqlDbType.VarChar).Value = login;
+                cmd.Parameters.Add("?Password", MySqlDbType.VarChar).Value = password;
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+        }
     }
 }

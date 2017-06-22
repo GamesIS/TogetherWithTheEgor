@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <style>
         #button {
@@ -38,22 +39,19 @@
                 background-color: #ffd800;
             }
     </style>
-
+    <script>
+    </script>
 </head>
 <body>
     <div class="container">
         <header>
-            <!-- Defining the header section of the page -->
             <nav>
-                <!-- Defining the navigation menu -->
                 <ul>
-                    <li class="selected"><a href="/">Главная</a></li>
-                    <li><a href="#">Мои заказы</a></li>                    
+                    <li class="selected"><a href="/">Главная</a></li>                  
                     @Html.Action("UserBlock", "Account")                    
                 </ul>
             </nav>
             <section id="submenu">                
-                <!-- Defining the sub menu -->
                 <ul>
                     @Html.Action("Menu", "Nav")
                 </ul>
@@ -64,7 +62,12 @@
             @RenderBody()
         </div>
 
-        <footer></footer>
+        <footer>
+            <div style="color:black; margin-left:23%">
+                <h2>Created by b1-IFST-21 spring-summer 2017 before session</h2>
+                <h4>We dont know what write here, sorry</h4>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

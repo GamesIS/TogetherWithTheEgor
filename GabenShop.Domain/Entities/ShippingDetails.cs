@@ -12,16 +12,12 @@ namespace GabenShop.Domain.Entities
         [Required(ErrorMessage = "Укажите как вас зовут")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Укажите ваш адрес")]
-        [Display(Name = "Адрес")]
-        public string Line { get; set; }
+        [Required(ErrorMessage = "Укажите ваш email")]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
 
-        [Required(ErrorMessage = "Укажите город")]
-        [Display(Name = "Город")]
-        public string City { get; set; }
-
-        [Required(ErrorMessage = "Укажите страну")]
-        [Display(Name = "Страна")]
-        public string Country { get; set; }
+        [Required(ErrorMessage = "Укажите ваш реальный возраст")]
+        [Display(Name = "Возраст")]
+        public string Age { get; set; }
     }
 }

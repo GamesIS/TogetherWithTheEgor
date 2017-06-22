@@ -188,8 +188,6 @@ nav ul li a:hover, nav ul li.selected a {
 #content #right ul li .info {
     float: left;
     overflow: hidden;
-    padding: 17px 0 0 21px;
-    width: 164px;
     text-overflow: ellipsis;
 }
 
@@ -384,4 +382,46 @@ footer a{
 .panel-body .form-group input{
     width: 100%;
     margin: 5px 0px 5px 0px;
+}
+.sort {
+  display: inline-block;
+  font-family: arial,sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: rgb(68,68,68);
+  text-decoration: none;
+  user-select: none;
+  padding: .2em 1.2em;
+  outline: none;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 2px;
+  background: rgb(245,245,245) linear-gradient(#f4f4f4, #f1f1f1);
+  transition: all .218s ease 0s;
+}
+.sort:hover {
+  color: rgb(24,24,24);
+  border: 1px solid rgb(198,198,198);
+  background: #f7f7f7 linear-gradient(#f7f7f7, #f1f1f1);
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+.sort:active {
+  color: rgb(51,51,51);
+  border: 1px solid rgb(204,204,204);
+  background: rgb(238,238,238) linear-gradient(rgb(238,238,238), rgb(224,224,224));
+  box-shadow: 0 1px 2px rgba(0,0,0,.1) inset;
+}
+#orderCompleted{
+    margin-left:36%;
+}
+#orderCompleted input{
+    padding-bottom:7px;
+    margin-bottom:5px;
+    width: 250px;
+    border: 1px solid #00942f;
+   font-size: 15px; 
+   font-family: Tahoma; 
+}
+#orderCompleted label{
+    font-size:15px;
+    color:black;
 }

@@ -18,25 +18,51 @@ namespace GabenShop.WebUI.Controllers
             this.repository = repository;
         }
 
-        public ViewResult List(string category, int page = 1)
+        public ViewResult List(string category, int page = 1, int sort = 1)
         {
-            ProductsListViewModel model = new ProductsListViewModel
+            ProductsListViewModel model;
+            if(sort == 1)
             {
-                Products = repository.Products
-                .Where(p=> category == null || p.Category == category)
-                .OrderBy(Product => Product.ProductID)
+                model = new ProductsListViewModel
+                {
+                    Products = repository.Products
+                .Where(p => category == null || p.Category == category)
+                .OrderByDescending(Product => Product.Price)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize),
-                PagingInfo = new PagingInfo
-                {
-                    CurrentPage = page,
-                    ItemsPerPage = pageSize,
-                    TotalItems = category == null ?
+                    PagingInfo = new PagingInfo
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = pageSize,
+                        TotalItems = category == null ?
                         repository.Products.Count() :
                         repository.Products.Where(Product => Product.Category == category).Count()
-                },
-                CurrentCategory = category
-            };
+                    },
+                    CurrentCategory = category,
+                    CurrentSort = sort
+                };
+            }
+            else
+            {
+                model = new ProductsListViewModel
+                {
+                    Products = repository.Products
+                .Where(p => category == null || p.Category == category)
+                .OrderBy(Product => Product.Price)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize),
+                    PagingInfo = new PagingInfo
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = pageSize,
+                        TotalItems = category == null ?
+                        repository.Products.Count() :
+                        repository.Products.Where(Product => Product.Category == category).Count()
+                    },
+                    CurrentCategory = category,
+                    CurrentSort = sort
+                };
+            }                   
             return View(model);
         }
 

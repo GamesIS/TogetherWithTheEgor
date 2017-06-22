@@ -67,9 +67,8 @@ namespace GabenShop.Domain.Concrete//Изменить этот файл, Реа�
                     .AppendLine("---")
                     .AppendLine("Доставка:")
                     .AppendLine(shippingInfo.Name)
-                    .AppendLine(shippingInfo.Line)
-                    .AppendLine(shippingInfo.City)
-                    .AppendLine(shippingInfo.Country)
+                    .AppendLine(shippingInfo.Email)
+                    .AppendLine(shippingInfo.Age)
                     .AppendLine("---");
 
                 MailMessage mailMessage = new MailMessage(
